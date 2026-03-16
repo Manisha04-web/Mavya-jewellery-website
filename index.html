@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jewellery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Aloura</h1>
+
+    <input type="text" id="searchBar" placeholder="Search jewellery..." onkeyup="searchProducts()">
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart 🛒 <span id="cart-count">0</span></a>
+        <a href="login.html" id="profile-link">
+<img id="profile-icon" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="28">
+</a>
+    </nav>
+</header>
+
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Elegant Jewellery Collection</h2>
+    <p>
+        Welcome to Aloura – Where Elegance Meets Timeless Beauty.
+        At Aloura, we believe jewellery is more than just an accessory — it’s a reflection of your personality,
+        confidence, and grace. Our carefully curated collection is designed to add sparkle to your everyday
+        moments and glamour to your special occasions.
+        Shine brighter. Feel confident. Be unforgettable. 💎
+    </p>
+</section>
+
+
+<!-- Products Section -->
+<section class="products">
+
+    <!-- Nose Ring Product -->
+    <div class="product">
+        <div class="image-wrapper">
+            <img class="main-product"
+                 src="https://i.pinimg.com/1200x/d3/a5/17/d3a517268d908f325f69879e1fd48f85.jpg">
+
+            <!-- Variants -->
+            <div class="variants">
+                <img src="nosering1.jpg"
+                     onclick="selectVariant(this,300)">
+                <img src="nosering2.jpg"
+                     onclick="selectVariant(this,250)">
+                <img src="nosering3.jpg"
+                     onclick="selectVariant(this,350)">
+                <img src="nosering4.jpg"
+                     onclick="selectVariant(this,200)">
+                <img src="nosering5.jpg"
+                     onclick="selectVariant(this,300)">
+            </div>
+        </div>
+
+        <h3>Nose Rings</h3>
+        <p>Rs. <span class="price">200</span></p>
+        <button onclick="
+addToCart(
+'Nose Rings',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+    </div>
+    
+   
+
+    <!-- Bracelet -->
+    <div class="product">
+
+    <div class="image-wrapper">
+        <img class="main-product" src="bracelet.jpg">
+    </div>
+
+     <!--varients-->
+     <div class="variants">
+                <img src="bracelet.jpg" onclick="selectVariant(this, 499)">
+                <img src="bracelet1.jpg" onclick="selectVariant(this, 399)">
+                <img src="bracelet2.jpg" onclick="selectVariant(this, 300)">
+                <img src="bracelet3.jpg" onclick="selectVariant(this, 299)">
+                <img src="bracelet4.jpg" onclick="selectVariant(this, 300)">
+            </div>
+
+    <h3>Bracelet</h3>
+    <p>Rs. <span class="price">299</span></p>
+
+    <button onclick="
+addToCart(
+'Bracelet',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+</div>
+
+
+    <!-- Traditional Earrings -->
+    <div class="product">
+
+    <div class="image-wrapper">
+        <img class="main-product" src="traditionalearring.jpg">
+    </div>
+
+     <!--varients-->
+     <div class="variants">
+                <img src="traditionalearring.jpg" onclick="selectVariant(this, 499)">
+                <img src="traditionalearring2.jpg" onclick="selectVariant(this, 299)">
+                <img src="traditionalearring3.jpg" onclick="selectVariant(this, 350)">
+                <img src="traditionalearring4.jpg" onclick="selectVariant(this, 499)">
+                <img src="traditionalearring5.jpg" onclick="selectVariant(this, 350)">
+            </div>
+
+    <h3>Earrings</h3>
+    <p>Rs. <span class="price">599</span></p>
+
+    <button onclick="
+addToCart(
+'Earrings',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+</div>
+
+
+    <!-- Necklace -->
+    <div class="product">
+
+    <div class="image-wrapper">
+        <img class="main-product" src="necklace1.jpg">
+    </div>
+
+     <!--varients-->
+     <div class="variants">
+                <img src="necklace1.jpg" onclick="selectVariant(this, 350)">
+                <img src="necklace2.jpg" onclick="selectVariant(this, 399)">
+                <img src="necklace3.jpg" onclick="selectVariant(this, 350)">
+                <img src="necklace4.jpg" onclick="selectVariant(this, 459)">
+                <img src="necklace5.jpg" onclick="selectVariant(this, 490)">
+            </div>
+
+    <h3>Necklace</h3>
+    <p>Rs. <span class="price">350</span></p>
+
+    <button onclick="
+addToCart(
+'Necklace',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+</div>
+
+
+    <!-- Ring -->
+    <div class="product">
+
+    <div class="image-wrapper">
+        <img class="main-product" src="ring1.jpg">
+    </div>
+
+     <!--varients-->
+     <div class="variants">
+                <img src="ring1.jpg" onclick="selectVariant(this, 359)">
+                <img src="ring2.jpg" onclick="selectVariant(this, 399)">
+                <img src="ring3.jpg" onclick="selectVariant(this, 350)">
+                <img src="ring4.jpg" onclick="selectVariant(this, 490)">
+                <img src="ring5.jpg" onclick="selectVariant(this, 490)">
+            </div>
+
+    <h3>Rings</h3>
+    <p>Rs. <span class="price">359</span></p>
+
+    <button onclick="
+addToCart(
+'Rings',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+</div>
+
+
+    <!-- Anklets -->
+    <div class="product">
+
+    <div class="image-wrapper">
+        <img class="main-product" src="anklet1.jpg">
+    </div>
+
+     <!--varients-->
+     <div class="variants">
+                <img src="anklet1.jpg" onclick="selectVariant(this, 359)">
+                <img src="anklet2.jpg" onclick="selectVariant(this, 399)">
+                <img src="anklet3.jpg" onclick="selectVariant(this, 350)">
+                <img src="anklet4.jpg" onclick="selectVariant(this, 300)">
+                <img src="anklet5.jpg" onclick="selectVariant(this, 300)">
+            </div>
+
+    <h3>Anklets</h3>
+    <p>Rs. <span class="price">359</span></p>
+
+    <button onclick="
+addToCart(
+'Anklets',
+this.closest('.product').querySelector('.price').innerText,
+this.closest('.product').querySelector('.main-product').src
+)">
+Add to Cart
+</button>
+</div>   <!-- Anklets product end -->
+
+</section>   <!-- PRODUCTS SECTION CLOSE -->
+
+<!-- ================= BLOG SECTION ================= -->
+<footer class="premium-footer">
+
+
+<!-- ================= BLOG SECTION ================= -->
+
+<!-- BLOG POPUP -->
+ <footer class="premium-footer">
+
+    <div class="footer-container">
+
+        <!-- LEFT COLUMN -->
+        <div class="footer-column">
+            <h2>Information</h2>
+            <ul>
+<li>
+<a href="javascript:void(0);" onclick="openBlog()">Blog</a>
+</li>
+
+<li>
+<a href="javascript:void(0);" onclick="openOffers()">Offers & Contest Details</a>
+</li>
+
+<li>
+<a href="javascript:void(0);" onclick="openHelp()">Help & FAQs</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="openAbout()">About Aloura</a>
+</li>
+</ul>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="footer-column">
+            <h2>Contact Us</h2>
+           <p>+91 8800516619</p>
+            <p>+91 9971104137</p>
+            <p>manisha.r.work@gmail.com</p>
+        </div>
+
+    </div>
+
+</footer>
+
+<p style="text-align:center; margin-top:30px;">
+© 2026 Aloura Jewellery | All Rights Reserved
+</p>
+
+
+<!-- BLOG MODAL -->
+<div id="blogModal" class="blog-modal">
+    <div class="blog-content">
+
+        <span class="close-btn" onclick="closeBlog()">×</span>
+
+        <h2>🌸 The Art of Everyday Elegance</h2>
+
+<p>
+At <strong>Aloura</strong>, jewellery is not just an accessory — it’s a reflection of confidence and grace.
+</p>
+
+<p>
+From elegant nose rings to statement necklaces, every piece is designed to make you shine every day.
+</p>
+
+<p>
+But true elegance is not about wearing heavy pieces — it’s about choosing jewellery that feels like you.
+</p>
+
+<h3>✨ Why Everyday Jewellery Matters</h3>
+
+<ul>
+    <li>Minimal designs that complement both ethnic and western outfits</li>
+    <li>Lightweight pieces perfect for daily wear</li>
+    <li>Subtle sparkle that enhances your natural beauty</li>
+    <li>Versatile styles for office, college, and special occasions</li>
+</ul>
+
+<p>
+Jewellery has the power to transform even the simplest outfit into something special. 
+A delicate ring can add charm to your hands, soft earrings can brighten your face, 
+and a graceful necklace can complete your entire look effortlessly.
+</p>
+
+
+    </div>
+</div>  <!-- blog modal close -->
+
+<!-- new model-->
+ <div id="offersModal" class="blog-modal">
+
+    <div class="blog-content">
+
+        <span class="close-btn" onclick="closeOffers()">×</span>
+
+        <h2>🎁 Exclusive Offers & Contests</h2>
+
+        <p>
+        Discover exciting offers and exclusive contests at <strong>Aloura</strong>.
+        </p>
+
+        <p>
+        Enjoy special discounts, limited-time deals, and fun giveaways designed
+        to add more sparkle to your jewellery shopping experience.
+        </p>
+
+        <h3>✨ What You Can Expect</h3>
+
+        <ul>
+            <li>Seasonal discounts on selected jewellery</li>
+            <li>Special festival offers</li>
+            <li>Exclusive Instagram giveaways</li>
+            <li>Lucky draw contests for loyal customers</li>
+        </ul>
+
+        <p>
+        Stay connected with Aloura and never miss a chance to shine with
+        beautiful jewellery at amazing prices. 💎
+        </p>
+
+    </div>
+
+</div>
+
+<div id="helpModal" class="blog-modal">
+
+<div class="blog-content">
+
+<span class="close-btn" onclick="closeHelp()">×</span>
+
+<h2>💬 Need Help?</h2>
+
+<p>
+Have questions? We're here to help.  
+Send us your query and our team will get back to you soon.
+</p>
+
+<form action="https://formsubmit.co/manisha.r.work@gmail.com" method="POST">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Write your question..." required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+</div>
+
+<div id="aboutModal" class="blog-modal">
+
+<div class="blog-content">
+
+<span class="close-btn" onclick="closeAbout()">×</span>
+
+<h2>💎 About Aloura</h2>
+
+<p>
+At <strong>Aloura</strong>, we believe that jewellery is more than just an accessory — it is a reflection of your personality, confidence, and individuality.
+</p>
+
+<p>
+Our brand is inspired by the idea that every woman deserves to feel elegant & unique. Each piece in our collection is thoughtfully curated to bring a perfect balance of modern style and timeless beauty.
+</p>
+
+<p>
+From delicate rings to elegant necklaces and graceful anklets, every design is created to enhance your natural charm and complement your everyday style.
+</p>
+
+<h3>✨ Our Jewellery Focus</h3>
+
+<ul>
+<li>Stylish yet minimal</li>
+<li>Perfect for everyday wear</li>
+<li>Elegant for special occasions</li>
+</ul>
+
+<p>
+Our mission is — to create jewellery that helps you shine effortlessly in every moment of life.
+</p>
+
+<p>
+At <strong>Aloura</strong>, we don’t just sell jewellery — we celebrate confidence, beauty, and self-expression.
+</p>
+
+<p>
+<strong>Shine brighter. Feel confident. Be unforgettable with Aloura. ✨</strong>
+</p>
+
+</div>
+</div> 
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

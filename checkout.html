@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - Aloura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="checkout">
+    <h2>Checkout 💳</h2>
+
+    <input type="text" placeholder="Full Name">
+    <input type="text" placeholder="Address">
+    <input type="text" placeholder="Phone Number">
+
+    <button onclick="placeOrder()">Place Order</button>
+</section>
+
+<script>
+function placeOrder() {
+    alert("🎉 Order Placed Successfully!");
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
