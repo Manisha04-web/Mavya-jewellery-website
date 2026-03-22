@@ -1,12 +1,13 @@
 // ===============================
 // ADD TO CART FUNCTION
 // ===============================
-
 function addToCart(name, price, image) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let existingItem = cart.find(item => item.name === name);
+    let existingItem = cart.find(item => 
+    item.name === name && item.image === image
+);
 
     if (existingItem) {
         existingItem.quantity += 1;
@@ -21,27 +22,48 @@ function addToCart(name, price, image) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount(); // 👈 add this
-
+    updateCartCount();
     showToast("Item added to cart 🛒");
 }
-function showToast(message){
 
-    let toast=document.createElement("div");
-    toast.className="toast";
-    toast.innerText=message;
+// ===============================
+// UPDATE CART COUNT
+// ===============================
+function updateCartCount() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartCount = 0;
+
+    cart.forEach(item => {
+        cartCount += item.quantity;
+    });
+
+    let countElement = document.getElementById("cart-count");
+
+    if (countElement) {
+        countElement.innerText = cartCount;
+    }
+}
+
+// ===============================
+// TOAST MESSAGE
+// ===============================
+function showToast(message){
+    let toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerText = message;
 
     document.body.appendChild(toast);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         toast.remove();
-    },2000);
+    }, 2000);
 }
+
 
 // ===============================
 // CHANGE QUANTITY
 // ===============================
-
 function changeQty(index, change) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -57,11 +79,9 @@ function changeQty(index, change) {
 }
 
 
-
 // ===============================
 // REMOVE ITEM
 // ===============================
-
 function removeItem(index) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -73,11 +93,9 @@ function removeItem(index) {
 }
 
 
-
 // ===============================
-// DISPLAY CART ITEMS (Cart Page)
+// DISPLAY CART ITEMS
 // ===============================
-
 if (document.getElementById("cart-items")) {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -130,102 +148,60 @@ if (document.getElementById("cart-items")) {
 }
 
 
-
 // ===============================
-// UPDATE CART COUNT (Navbar)
+// BLOG MODAL
 // ===============================
-
-function updateCartCount() {
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartCount = 0;
-
-    cart.forEach(item => {
-        cartCount += item.quantity;
-    });
-
-    let countElement = document.getElementById("cart-count");
-
-    if (countElement) {
-        countElement.innerText = cartCount;
-    }
-
-}
-
-/* BLOg part */
 function openBlog() {
     document.getElementById("blogModal").classList.add("active");
+    document.querySelector("header").style.display = "none";
 }
 
 function closeBlog() {
     document.getElementById("blogModal").classList.remove("active");
+    document.querySelector("header").style.display = "flex";
 }
-
 window.onclick = function(event) {
-
     let modal = document.getElementById("blogModal");
 
-    if(event.target === modal){
+    if (event.target === modal) {
         modal.classList.remove("active");
     }
-
 }
 
-/* function display cart */
-function displayCart() {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartContainer = document.getElementById("cart-items");
-
-    cartContainer.innerHTML = "";
-
-    cart.forEach(item => {
-        cartContainer.innerHTML += `
-            <div class="cart-item">
-                <img src="${item.image}" width="80">
-                <h3>${item.name}</h3>
-                <p>Rs. ${item.price}</p>
-            </div>
-        `;
-    });
-}
-
+// ===============================
+// VARIANT SELECT
+// ===============================
 function selectVariant(clickedImg, price) {
-    console.log("Clicked price is:", price);
 
     const productCard = clickedImg.closest(".product");
-    if (!productCard) return;
-
     const mainImage = productCard.querySelector(".main-product");
     const priceElement = productCard.querySelector(".price");
 
-    if (mainImage) {
-        mainImage.src = clickedImg.src;
-    }
-
-    if (priceElement) {
-        priceElement.textContent = price;
-    }
+    mainImage.src = clickedImg.src;
+    priceElement.textContent = price;
 }
 
-document.querySelectorAll(".variants img").forEach(img=>{
-    img.addEventListener("click",function(){
+
+// ===============================
+// VARIANT BORDER ACTIVE
+// ===============================
+document.querySelectorAll(".variants img").forEach(img => {
+    img.addEventListener("click", function() {
 
         let parent = this.closest(".variants");
-        parent.querySelectorAll("img").forEach(i=>i.style.border="2px solid transparent");
 
-        this.style.border="2px solid #b76e79";
+        parent.querySelectorAll("img")
+        .forEach(i => i.style.border = "2px solid transparent");
+
+        this.style.border = "2px solid #b76e79";
     });
 });
 
 
-/* dark mode*/
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-}
-
-/******************************/
-
+// ===============================
+// SEARCH FUNCTION (FIXED)
+// ===============================
 function searchProducts(){
 
     let input = document.getElementById("searchBar").value.toLowerCase();
@@ -236,16 +212,34 @@ function searchProducts(){
         let name = product.querySelector("h3").innerText.toLowerCase();
 
         if(name.includes(input)){
-            product.style.display = "block";
-        }else{
+            product.style.display = "flex"; // ✅ FIX
+        } else {
             product.style.display = "none";
         }
 
     });
 }
-updateCartCount();
 
-/***offer section***/
+
+// ===============================
+// FADE-IN SCROLL ANIMATION
+// ===============================
+const faders = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+    faders.forEach(el => {
+        let rect = el.getBoundingClientRect().top;
+
+        if (rect < window.innerHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
+
+
+// ===============================
+// OTHER MODALS
+// ===============================
 function openOffers() {
     document.getElementById("offersModal").classList.add("active");
 }
@@ -254,49 +248,49 @@ function closeOffers() {
     document.getElementById("offersModal").classList.remove("active");
 }
 
-/**help section**/
 function openHelp() {
-document.getElementById("helpModal").classList.add("active");
+    document.getElementById("helpModal").classList.add("active");
 }
 
 function closeHelp() {
-document.getElementById("helpModal").classList.remove("active");
+    document.getElementById("helpModal").classList.remove("active");
 }
 
-/**about section**/
 function openAbout() {
-document.getElementById("aboutModal").classList.add("active");
+    document.getElementById("aboutModal").classList.add("active");
 }
 
 function closeAbout() {
-document.getElementById("aboutModal").classList.remove("active");
+    document.getElementById("aboutModal").classList.remove("active");
 }
 
-/**login function**/
+
+// ===============================
+// LOGIN
+// ===============================
 function loginUser(){
 
-let name=document.getElementById("username").value;
-let email=document.getElementById("email").value;
+    let name = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
 
-if(name==="" || email===""){
-alert("Please fill all fields");
-return;
-}
+    if(name === "" || email === ""){
+        alert("Please fill all fields");
+        return;
+    }
 
-localStorage.setItem("userName",name);
-
-window.location.href="index.html";
-
+    localStorage.setItem("userName", name);
+    window.location.href = "index.html";
 }
 
 let userName = localStorage.getItem("userName");
 
 if(userName){
-
-let profileLink=document.getElementById("profile-link");
-
-if(profileLink){
-profileLink.href="#";
+    let profileLink = document.getElementById("profile-link");
+    if(profileLink){
+        profileLink.href = "#";
+    }
 }
 
-}
+window.onload = function () {
+    updateCartCount();
+};
