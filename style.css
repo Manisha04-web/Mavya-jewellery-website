@@ -80,11 +80,22 @@ nav a:hover::after {
     background: linear-gradient(to right, #fff1f3, #fdf9f6);
 }
 
-.hero h2 {
-    font-size: 40px;
-    color: #b76e79;
-    animation: fadeUp 1s ease;
+/* HERO TEXT FIX */
+.hero h2{
+    line-height: 1.2;
 }
+
+/* MOBILE VIEW FIX */
+@media (max-width:768px){
+
+    .hero h2{
+        font-size: 26px;
+        max-width: 300px;
+        margin: auto;
+    }
+
+}
+
 
 .hero p {
     line-height: 1.7;
@@ -492,4 +503,105 @@ footer + p {
 .blog-content button:hover {
     transform: scale(1.03);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ================= PAGE LOAD ANIMATION ================= */
+
+body {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+/* jab page load ho jaye */
+body.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= MOBILE PRODUCT SCROLL ANIMATION ================= */
+
+@media (max-width:768px){
+
+    .product{
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.6s ease;
+    }
+
+    .product.show{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ================= MOBILE NAVBAR ONLY ================= */
+
+@media (max-width:768px){
+
+    header{
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* LEFT → LOGO */
+    .logo{
+        grid-column: 1;
+        font-size: 20px;
+    }
+
+    /* CENTER → SEARCH */
+    #searchBar{
+        grid-column: 2;
+        width: 100%;
+        max-width: 180px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* RIGHT → ICONS */
+    nav{
+        grid-column: 3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* ❌ HOME HIDE (mobile pe nahi chahiye) */
+    .home-link{
+        display: none;
+    }
+
+    /* ❌ CART TEXT HIDE */
+    .cart-link{
+        font-size: 0;
+        position: relative;
+    }
+
+    /* ✔ only icon show */
+    .cart-link::after{
+        content: "🛒";
+        font-size: 18px;
+    }
+
+    /* cart count badge */
+    #cart-count{
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        background: #b76e79;
+        color: white;
+        font-size: 10px;
+        padding: 2px 5px;
+        border-radius: 50%;
+    }
+
+    /* profile icon */
+    #profile-icon{
+        width: 22px;
+    }
+
 }

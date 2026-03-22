@@ -294,3 +294,33 @@ if(userName){
 window.onload = function () {
     updateCartCount();
 };
+
+// PAGE LOAD ANIMATION
+window.addEventListener("load", function () {
+    document.body.classList.add("loaded");
+});
+
+// ================= MOBILE SCROLL ANIMATION =================
+
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+function handleScrollAnimation() {
+
+    if (!isMobile()) return; // ❌ desktop pe kuch nahi hoga
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        let top = product.getBoundingClientRect().top;
+
+        if (top < window.innerHeight - 100) {
+            product.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", handleScrollAnimation);
+window.addEventListener("load", handleScrollAnimation);
