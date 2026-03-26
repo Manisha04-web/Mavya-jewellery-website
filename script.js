@@ -151,23 +151,10 @@ if (document.getElementById("cart-items")) {
 // ===============================
 // BLOG MODAL
 // ===============================
-function openBlog() {
-    document.getElementById("blogModal").classList.add("active");
-    document.querySelector("header").style.display = "none";
-}
-
-function closeBlog() {
-    document.getElementById("blogModal").classList.remove("active");
-    document.querySelector("header").style.display = "flex";
-}
-window.onclick = function(event) {
+   function openBlog(event) {
     let modal = document.getElementById("blogModal");
-
-    if (event.target === modal) {
-        modal.classList.remove("active");
-    }
+    modal.classList.add("active");
 }
-
 
 // ===============================
 // VARIANT SELECT
@@ -240,30 +227,21 @@ window.addEventListener("scroll", () => {
 // ===============================
 // OTHER MODALS
 // ===============================
-function openOffers() {
-    document.getElementById("offersModal").classList.add("active");
+function openOffers(event) {
+    let modal = document.getElementById("offersModal");
+    modal.classList.add("active");
 }
 
-function closeOffers() {
-    document.getElementById("offersModal").classList.remove("active");
+function openHelp(event) {
+    let modal = document.getElementById("helpModal");
+    modal.classList.add("active");
 }
 
-function openHelp() {
-    document.getElementById("helpModal").classList.add("active");
-}
+function openAbout(event) {
+    let modal = document.getElementById("aboutModal");
+    modal.classList.add("active");
 
-function closeHelp() {
-    document.getElementById("helpModal").classList.remove("active");
 }
-
-function openAbout() {
-    document.getElementById("aboutModal").classList.add("active");
-}
-
-function closeAbout() {
-    document.getElementById("aboutModal").classList.remove("active");
-}
-
 
 // ===============================
 // LOGIN
@@ -324,3 +302,30 @@ function handleScrollAnimation() {
 
 window.addEventListener("scroll", handleScrollAnimation);
 window.addEventListener("load", handleScrollAnimation);
+
+// close modal //
+function closeBlog() {
+    document.getElementById("blogModal").classList.remove("active");
+}
+
+function closeOffers() {
+    document.getElementById("offersModal").classList.remove("active");
+}
+
+function closeHelp() {
+    document.getElementById("helpModal").classList.remove("active");
+}
+
+function closeAbout() {
+    document.getElementById("aboutModal").classList.remove("active");
+}
+
+// outside close modal //
+window.addEventListener("click", function(e){
+    document.querySelectorAll(".blog-modal").forEach(modal => {
+        if(e.target === modal){
+            modal.classList.remove("active");
+        }
+    });
+});
+

@@ -96,15 +96,19 @@ nav a:hover::after {
 
 }
 
-
 .hero p {
     line-height: 1.7;
 }
 
 /* HERO ANIMATION */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 /* PRODUCTS GRID (FIXED) */
@@ -224,6 +228,17 @@ button:hover::before {
         grid-template-columns: 1fr;
     }
 }
+@media (max-width:768px){
+
+    .blog-modal{
+        align-items: flex-start;
+    }
+
+    .blog-content{
+        width: 95%;
+        max-height: 80vh;
+    }
+}
 
 /* ===== LOGO STYLING ===== */
 
@@ -336,36 +351,35 @@ button:hover::before {
 }
 
 .blog-modal {
-    display: none;   /* ❗ default hidden */
+    display: none;
     position: fixed;
-    top: 0;
+    top: 0;   
     left: 0;
     width: 100%;
     height: 100%;
-
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.5);
 
     justify-content: center;
-    align-items: center;
+    align-items: center;   /* ✅ center me laega */
 
     z-index: 9999;
 }
-
-/* ACTIVE STATE */
+/* 👇 IMPORTANT */
 .blog-modal.active {
     display: flex;
 }
 
 .blog-content {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 90%;
+    background: #fff;
+    width: 100%;
     max-height: 80vh;
+
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+
     overflow-y: auto;
-    position: relative;
-    animation: popup 0.3s ease;
+
+    animation: slideUp 0.3s ease;
 }
 
 /* ===== PREMIUM FOOTER FIX ===== */
@@ -533,9 +547,11 @@ body.loaded {
         opacity: 1;
         transform: translateY(0);
     }
-
+    .blog-modal{
+        align-items: flex-start;   /* ✅ center ki jagah top + space */
+        padding-top: 80px;         /* ✅ navbar ke niche spacing */
+    }
 }
-
 /* ================= MOBILE NAVBAR ONLY ================= */
 
 @media (max-width:768px){
@@ -604,4 +620,30 @@ body.loaded {
         width: 22px;
     }
 
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+}
+
+/* Toast message style */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #b76e79;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+    0% {opacity:0; transform:translateY(20px);}
+    20% {opacity:1; transform:translateY(0);}
+    80% {opacity:1;}
+    100% {opacity:0; transform:translateY(20px);}
 }
